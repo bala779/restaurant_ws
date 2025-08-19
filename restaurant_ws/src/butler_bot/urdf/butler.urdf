@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+<robot name="food_bot">
+
+  <!-- Materials -->
+  <material name="black"><color rgba="0 0 0 1"/></material>
+  <material name="grey"><color rgba="0.6 0.6 0.6 1"/></material>
+  <material name="blue"><color rgba="0.1 0.1 0.8 1"/></material>
+
+  <!-- Base footprint -->
+  <link name="base_footprint"/>
+
+  <!-- Base link -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0.0175" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.5 0.5 0.125"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+  </link>
+
+  <joint name="base_footprint_to_base_link" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+  </joint>
+  <!-- ================== WHEELS ==================
+       Frame convention: x forward, y left, z up.
+       Wheel cylinder rotated +90° about X so its axis aligns with Y.
+       Wheel spins about Y => joint axis "0 1 0".
+       Base half-height = 0.15, wheel radius = 0.08,
+       so wheel center z = -0.15 + 0.08 = -0.07.
+       Wheel lateral/longitudinal offsets = ±0.20 m (slightly inset).
+  =============================================== -->
+
+  <!-- Front Left Wheel -->
+  <link name="front_left_wheel">
+    <visual>
+      <origin rpy="1.5708 0 0"/>
+      <geometry><cylinder radius="0.08" length="0.04"/></geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 0"/>
+      <geometry><cylinder radius="0.08" length="0.04"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <!-- Front Right Wheel -->
+  <link name="front_right_wheel">
+    <visual>
+      <origin rpy="1.5708 0 0"/>
+      <geometry><cylinder radius="0.08" length="0.04"/></geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 0"/>
+      <geometry><cylinder radius="0.08" length="0.04"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <!-- Rear Left Wheel -->
+  <link name="rear_left_wheel">
+    <visual>
+      <origin rpy="1.5708 0 0"/>
+      <geometry><cylinder radius="0.08" length="0.04"/></geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 0"/>
+      <geometry><cylinder radius="0.08" length="0.04"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <!-- Rear Right Wheel -->
+  <link name="rear_right_wheel">
+    <visual>
+      <origin rpy="1.5708 0 0"/>
+      <geometry><cylinder radius="0.08" length="0.04"/></geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="1.5708 0 0"/>
+      <geometry><cylinder radius="0.08" length="0.04"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+
+  <joint name="front_left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="front_left_wheel"/>
+    <origin xyz="0.20 0.20 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <mimic joint="rear_left_wheel_joint"/>
+  </joint>
+
+  <joint name="front_right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="front_right_wheel"/>
+    <origin xyz="0.20 -0.20 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <mimic joint="rear_right_wheel_joint"/>
+  </joint>
+
+  <joint name="rear_left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="rear_left_wheel"/>
+    <origin xyz="-0.20 0.20 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="rear_right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="rear_right_wheel"/>
+    <origin xyz="-0.20 -0.20 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+
+
+  <!-- ================== TRAY SUPPORT STICK ================== -->
+  <!-- Base top is at z=+0.15; stick length 0.5; tray sits on stick top -->
+  <link name="tray_stick_link">
+    <visual>
+      <geometry><cylinder length="0.5" radius="0.03"/></geometry>
+      <origin xyz="0 0 0.25" rpy="0 0 0"/>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry><cylinder length="0.5" radius="0.03"/></geometry>
+      <origin xyz="0 0 0.25" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.002" iyy="0.002" izz="0.002" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="tray_stick_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="tray_stick_link"/>
+    <origin xyz="0 0 0.05" rpy="0 0 0"/>
+  </joint>
+
+  <!-- ================== TRAY ================== -->
+  <link name="tray_link">
+    <visual>
+      <geometry><box size="0.6 0.6 0.02"/></geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry><box size="0.6 0.6 0.02"/></geometry>
+      <origin xyz="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="2"/>
+      <inertia ixx="0.01" iyy="0.01" izz="0.01" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="tray_joint" type="fixed">
+    <parent link="tray_stick_link"/>
+    <child link="tray_link"/>
+    <origin xyz="0 0 0.5" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Mount cube at tray front -->
+  <!-- <link name="lidar_mount_link">
+    <visual>
+      <geometry>
+        <box>
+          <size>0.05 0.05 0.05</size>
+        </box>
+      </geometry>
+      <material>
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="lidar_mount_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="lidar_mount_link"/>
+    <origin xyz="0.2 0 0.45" rpy="0 0 0"/> 
+  </joint> -->
+
+  <link name="lidar_link">
+    <visual>
+      <geometry><cylinder length="0.05" radius="0.05"/></geometry>
+      <origin xyz="0 0 0"/>
+      <material name="grey"/>
+    </visual>
+    <collision>
+      <geometry><cylinder length="0.05" radius="0.05"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.001" iyy="0.001" izz="0.001" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+
+  <joint name="lidar_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="lidar_link"/>
+    <origin xyz="0 0 0.2" rpy="0 0 0"/>
+  </joint>
+
+  <!-- ================== GAZEBO: DIFF DRIVE ================== -->
+    <gazebo>
+    <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+      <ros>
+        <namespace>/</namespace>
+        <remapping>cmd_vel:=cmd_vel</remapping>
+      </ros>
+      <update_rate>10</update_rate>
+      <left_joint>rear_left_wheel_joint</left_joint>
+      <right_joint>rear_right_wheel_joint</right_joint>
+      <wheel_separation>0.40</wheel_separation>
+      <wheel_diameter>0.12</wheel_diameter>
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+      <command_timeout>1.0</command_timeout>
+    </plugin>
+  </gazebo>
+
+<!-- Friction on all wheels -->
+<!-- <gazebo reference="front_left_wheel"><mu1>1.0</mu1><mu2>1.0</mu2></gazebo>
+<gazebo reference="front_right_wheel"><mu1>1.0</mu1><mu2>1.0</mu2></gazebo> -->
+<gazebo reference="rear_left_wheel"><mu1>1.0</mu1><mu2>1.0</mu2></gazebo>
+<gazebo reference="rear_right_wheel"><mu1>1.0</mu1><mu2>1.0</mu2></gazebo>
+
+  <!-- ================== GAZEBO: LIDAR ================== -->
+  <!-- LIDAR Sensor Plugin -->
+  <!-- <gazebo reference="lidar_link"> -->
+  <!-- <sensor type="ray" name="lidar">
+    <pose>0 0 0 0 0 0</pose>
+    <visualize>false</visualize>
+    <always_on>false</always_on>
+    <update_rate>10</update_rate>
+
+    < ray>
+      <scan>
+        <horizontal>
+          <samples>720</samples>
+          <resolution>1</resolution>
+          <min_angle>-3.14159</min_angle>
+          <max_angle>3.14159</max_angle>
+        </horizontal>
+      </scan>
+      <range>
+        <min>0.12</min>
+        <max>12.0</max>
+        <resolution>0.01</resolution>
+      </range>
+      <noise>
+        <type>gaussian</type>
+        <mean>0.0</mean>
+        <stddev>0.01</stddev>
+      </noise>
+    </ray>
+
+    <plugin name="gazebo_ros_laser" filename="libgazebo_ros_ray_sensor.so">
+      <ros>
+        <remapping>~/out:=scan</remapping>
+      </ros>
+      <output_type>sensor_msgs/LaserScan</output_type>
+      <frame_name>lidar_link</frame_name>
+    </plugin>
+  </sensor> -->
+<!-- </gazebo> -->
+
+
+
+</robot>

@@ -1,0 +1,255 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="restaurant_env">
+    <static>true</static>
+    <link name="restaurant_env">
+
+      <!-- Floor -->
+      <collision name="floor_collision">
+        <pose>0 0 -0.05 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>10 8 0.1</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="floor_visual">
+        <pose>0 0 -0.05 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>10 8 0.1</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.84 0.76 0.64 1</ambient>
+          <diffuse>0.84 0.76 0.64 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Walls -->
+      <collision name="wall_north_collision">
+        <pose>0 4 -0.05 0 0 0</pose>
+        <geometry>
+          <box><size>10 0.05 1</size></box>
+        </geometry>
+      </collision>
+      <visual name="wall_north_visual">
+        <pose>0 4 -0.05 0 0 0</pose>
+        <geometry>
+          <box><size>10 0.05 1</size></box>
+        </geometry>
+        <material><ambient>0.8 0.8 0.82 1</ambient><diffuse>0.8 0.8 0.82 1</diffuse></material>
+      </visual>
+
+      <collision name="wall_south_collision">
+        <pose>0 -4 -0.05 0 0 0</pose>
+        <geometry>
+          <box><size>10 0.05 1</size></box>
+        </geometry>
+      </collision>
+      <visual name="wall_south_visual">
+        <pose>0 -4 -0.05 0 0 0</pose>
+        <geometry>
+          <box><size>10 0.05 1</size></box>
+        </geometry>
+        <material><ambient>0.8 0.8 0.82 1</ambient><diffuse>0.8 0.8 0.82 1</diffuse></material>
+      </visual>
+
+      <collision name="wall_east_collision">
+        <pose>5 0 -0.05 0 0 0</pose>
+        <geometry>
+          <box><size>0.05 8 1</size></box>
+        </geometry>
+      </collision>
+      <visual name="wall_east_visual">
+        <pose>5 0 -0.05 0 0 0</pose>
+        <geometry>
+          <box><size>0.05 8 1</size></box>
+        </geometry>
+        <material><ambient>0.8 0.8 0.82 1</ambient><diffuse>0.8 0.8 0.82 1</diffuse></material>
+      </visual>
+
+      <collision name="wall_west_collision">
+        <pose>-5 0 -0.05 0 0 0</pose>
+        <geometry>
+          <box><size>0.05 8 1</size></box>
+        </geometry>
+      </collision>
+      <visual name="wall_west_visual">
+        <pose>-5 0 -0.05 0 0 0</pose>
+        <geometry>
+          <box><size>0.05 8 1</size></box>
+        </geometry>
+        <material><ambient>0.8 0.8 0.82 1</ambient><diffuse>0.8 0.8 0.82 1</diffuse></material>
+      </visual>
+
+      <!-- Table 1 -->
+      <collision name="table1_top_collision">
+        <pose>-3.25 -2.5 0.875 0 0 0</pose>
+        <geometry>
+          <box><size>1.2 1.2 0.04</size></box>
+        </geometry>
+      </collision>
+      <visual name="table1_top_visual">
+        <pose>-3.25 -2.5 0.875 0 0 0</pose>
+        <geometry>
+          <box><size>1.2 1.2 0.04</size></box>
+        </geometry>
+        <material><ambient>0.55 0.27 0.07 1</ambient><diffuse>0.55 0.27 0.07 1</diffuse></material>
+      </visual>
+
+      <!-- Table 1 stem -->
+      <collision name="table1_stem_collision">
+        <pose>-3.25 -2.5 0.68 0 0 0</pose>
+        <geometry>
+          <cylinder><radius>0.08</radius><length>0.36</length></cylinder>
+        </geometry>
+      </collision>
+      <visual name="table1_stem_visual">
+        <pose>-3.25 -2.5 0.68 0 0 0</pose>
+        <geometry>
+          <cylinder><radius>0.08</radius><length>0.36</length></cylinder>
+        </geometry>
+        <material><ambient>0.25 0.25 0.28 1</ambient><diffuse>0.25 0.25 0.28 1</diffuse></material>
+      </visual>
+
+      <!-- Hollow cube legs -->
+      <collision name="table1_legs_collision">
+        <pose>-3.25 -2.5 0 0 0 0</pose>
+        <geometry>
+          <box><size>1.5 1.5 1</size></box>
+        </geometry>
+      </collision>
+      <visual name="table1_legs_visual">
+        <pose>-3.25 -2.5 0 0 0 0</pose>
+        <geometry>
+          <box><size>1.5 1.5 1</size></box>
+        </geometry>
+        <material><ambient>0.25 0.25 0.28 1</ambient><diffuse>0.25 0.25 0.28 1</diffuse></material>
+      </visual>
+
+      <!-- Table 2 -->
+      <collision name="table2_top_collision">
+        <pose>3 -2.5 0.875 0 0 0</pose>
+        <geometry>
+          <box><size>1.2 1.2 0.04</size></box>
+        </geometry>
+      </collision>
+      <visual name="table2_top_visual">
+        <pose>3 -2.5 0.875 0 0 0</pose>
+        <geometry>
+          <box><size>1.2 1.2 0.04</size></box>
+        </geometry>
+        <material><ambient>0.55 0.27 0.07 1</ambient><diffuse>0.55 0.27 0.07 1</diffuse></material>
+      </visual>
+
+      <!-- Table 2 stem -->
+      <collision name="table2_stem_collision">
+        <pose>3 -2.5 0.68 0 0 0</pose>
+        <geometry>
+          <cylinder><radius>0.08</radius><length>0.36</length></cylinder>
+        </geometry>
+      </collision>
+      <visual name="table2_stem_visual">
+        <pose>3 -2.5 0.68 0 0 0</pose>
+        <geometry>
+          <cylinder><radius>0.08</radius><length>0.36</length></cylinder>
+        </geometry>
+        <material><ambient>0.25 0.25 0.28 1</ambient><diffuse>0.25 0.25 0.28 1</diffuse></material>
+      </visual>
+
+      <!-- Hollow cube legs -->
+      <collision name="table2_legs_collision">
+        <pose>3 -2.5 0 0 0 0</pose>
+        <geometry>
+          <box><size>1.5 1.5 1</size></box>
+        </geometry>
+      </collision>
+      <visual name="table2_legs_visual">
+        <pose>3 -2.5 0 0 0 0</pose>
+        <geometry>
+          <box><size>1.5 1.5 1</size></box>
+        </geometry>
+        <material><ambient>0.25 0.25 0.28 1</ambient><diffuse>0.25 0.25 0.28 1</diffuse></material>
+      </visual>
+
+      <!-- Table 3 -->
+      <collision name="table3_top_collision">
+        <pose>-3.25 2.5 0.875 0 0 0</pose>
+        <geometry>
+          <box><size>1.2 1.2 0.04</size></box>
+        </geometry>
+      </collision>
+      <visual name="table3_top_visual">
+        <pose>-3.25 2.5 0.875 0 0 0</pose>
+        <geometry>
+          <box><size>1.2 1.2 0.04</size></box>
+        </geometry>
+        <material><ambient>0.55 0.27 0.07 1</ambient><diffuse>0.55 0.27 0.07 1</diffuse></material>
+      </visual>
+
+      <!-- Table 3 stem -->
+      <collision name="table3_stem_collision">
+        <pose>-3.25 2.5 0.68 0 0 0</pose>
+        <geometry>
+          <cylinder><radius>0.08</radius><length>0.36</length></cylinder>
+        </geometry>
+      </collision>
+      <visual name="table3_stem_visual">
+        <pose>-3.25 2.5 0.68 0 0 0</pose>
+        <geometry>
+          <cylinder><radius>0.08</radius><length>0.36</length></cylinder>
+        </geometry>
+        <material><ambient>0.25 0.25 0.28 1</ambient><diffuse>0.25 0.25 0.28 1</diffuse></material>
+      </visual>
+
+      <!-- Hollow cube legs -->
+      <collision name="table3_legs_collision">
+        <pose>-3.25 2.5 0 0 0 0</pose>
+        <geometry>
+          <box><size>1.5 1.5 1</size></box>
+        </geometry>
+      </collision>
+      <visual name="table3_legs_visual">
+        <pose>-3.25 2.5 0 0 0 0</pose>
+        <geometry>
+          <box><size>1.5 1.5 1</size></box>
+        </geometry>
+        <material><ambient>0.25 0.25 0.28 1</ambient><diffuse>0.25 0.25 0.28 1</diffuse></material>
+      </visual>
+
+
+      <!-- Kitchen block -->
+      <collision name="kitchen_counter_collision">
+        <pose>3.8 2.5 0.4 0 0 0</pose>
+        <geometry><box><size>2.0 0.8 0.9</size></box></geometry>
+      </collision>
+      <visual name="kitchen_counter_visual">
+        <pose>3.8 2.5 0.4 0 0 0</pose>
+        <geometry><box><size>2.0 0.8 0.9</size></box></geometry>
+        <material><ambient>0.25 0.25 0.28 1</ambient><diffuse>0.25 0.25 0.28 1</diffuse></material>
+      </visual>
+
+      <collision name="kitchen_cabinet_collision">
+        <pose>4.3 2.5 0.5 0 0 0</pose>
+        <geometry><box><size>0.9 0.8 1.0</size></box></geometry>
+      </collision>
+      <visual name="kitchen_cabinet_visual">
+        <pose>4.3 2.5 0.5 0 0 0</pose>
+        <geometry><box><size>0.9 0.8 1.0</size></box></geometry>
+        <material><ambient>0.25 0.25 0.28 1</ambient><diffuse>0.25 0.25 0.28 1</diffuse></material>
+      </visual>
+
+      <collision name="kitchen_fridge_collision">
+        <pose>2.1 3.5 1.0 0 0 0</pose>
+        <geometry><box><size>0.8 0.8 2.0</size></box></geometry>
+      </collision>
+      <visual name="kitchen_fridge_visual">
+        <pose>2.1 3.5 1.0 0 0 0</pose>
+        <geometry><box><size>0.8 0.8 2.0</size></box></geometry>
+        <material><ambient>0.95 0.95 0.95 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material>
+      </visual>
+
+    </link>
+  </model>
+</sdf>

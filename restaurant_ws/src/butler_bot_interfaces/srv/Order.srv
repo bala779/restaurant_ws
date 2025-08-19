@@ -1,0 +1,6 @@
+string table
+string action
+string[] items
+---
+bool success
+

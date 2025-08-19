@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>butler_order_manager</name>
+  <version>0.0.0</version>
+  <description>Butler robot order manager with services and action execution</description>
+  <maintainer email="bala779g@gmail.com">balaji</maintainer>
+  <license>Goat_Robotics</license>
+
+  <!-- Build tools -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <!-- Dependencies -->
+  <depend>rclpy</depend>
+  <depend>std_msgs</depend>
+  <depend>builtin_interfaces</depend>
+  <depend>rosidl_default_generators</depend>
+  <exec_depend>rosidl_default_runtime</exec_depend>
+
+  <!-- Interface package group for actions/services -->
+  <member_of_group>rosidl_interface_packages</member_of_group>
+
+  <!-- Test dependencies -->
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

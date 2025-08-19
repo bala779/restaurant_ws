@@ -1,0 +1,10 @@
+# Goal
+string table_name
+string items
+---
+# Result
+bool success
+string message
+---
+# Feedback
+string status
