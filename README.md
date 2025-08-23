@@ -10,7 +10,7 @@ It demonstrates order handling, task execution, and robot movement services
 - **Order Dispatcher**: Publishes active orders to the robot executor.  
 - **Order Executor**: Executes tasks, monitors tray status, and controls robot navigation.  
 - **Custom Robot**: Mobile robot URDF with LiDAR and differential drive.  
-- **Simulation**: Restaurant environment with map and robot movement using `/cmd_vel` and service calls.  
+- **Simulation**: Restaurant environment with map and robot movement using SLAM & Nav2  
 
 ---
 
@@ -19,12 +19,7 @@ It demonstrates order handling, task execution, and robot movement services
 - `butler_order_manager` → Order stack handling, services, and action servers  
 - `butler_bot_interfaces` → Custom `.srv` and `.action` definitions (planned / pending setup)  
 - `my_robot_description` → URDF model for the robot  
-- `my_robot_bringup` → Launch files for simulation and testing  
-
----
-
-## Pending
-- Final connection between map and robot navigation (bridge setup).    
+- `my_robot_bringup` → Launch files for simulation and testing     
 
 ---
 
