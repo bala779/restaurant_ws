@@ -32,11 +32,6 @@ source install/setup.bash
 # Launch simulation
 ros2 launch my_robot_bringup restaurant_sim.launch.py
 
-# Send order
-ros2 service call /order_server butler_bot_interfaces/srv/Order "{order_id: 1}"
-
-export GAZEBO_MODEL_PATH={your_ws_path}/restaurant_ws/src/restaurant/models
-
 ## 7. How to Run
 # Launch Restaurant + Bot
 ros2 launch butler_bot butler_restaurant_env.launch.py
